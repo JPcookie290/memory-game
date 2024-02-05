@@ -1,11 +1,11 @@
-import MemoryCard from "./components/MemoryCard.container"
+import MemoryCard from "./components/MemoryCard";
 
 function App() {
-  
   return (
     <>
+      <MemoryCard />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

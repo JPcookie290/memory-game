@@ -1,4 +1,2 @@
-Components: memory-card, memory-cards-display, score (logic, view)
-Container: memory, memory-cards, score
+Components: memory-card, memory-cards-display, score(view), container
 Interfaces: file
-update state in container
