@@ -1,4 +1,4 @@
-import MemoryCard from "./components/MemoryCard";
+import MemoryCard from "./components/MemoryCard.container";
 import "./App.css";
 
 function App() {

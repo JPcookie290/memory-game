@@ -1,51 +1,28 @@
-import { useState, useEffect } from "react";
 import { Pokemon } from "./interfaces";
 
-export default function MemoryCard() {
-  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
-  const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[]>([]);
+interface Props {
+  filteredPokemons: Pokemon[];
+  handleClick: (poke: Pokemon) => void;
+}
 
-  useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
-      .then((response) => response.json())
-      .then((json) => setPokemons(json.results))
-      .catch((error) => console.error(error));
-  }, []);
-
-  useEffect(() => {
-    const pokemonNames = [
-      "bulbasaur",
-      "charmander",
-      "squirtle",
-      "butterfree",
-      "pikachu",
-      "jigglypuff",
-      "chansey",
-      "oddish",
-      "vulpix",
-      "ditto",
-      "dratini",
-      "mew",
-    ];
-    const myPokemon = pokemons.filter((pokemon) =>
-      pokemonNames.includes(pokemon.name)
-    );
-    setFilteredPokemons(myPokemon);
-  }, [pokemons]);
-
+export default function MemoryCard({ filteredPokemons, handleClick }: Props) {
   return (
     <>
       <h1>Memory Game</h1>
       <div className="memoryCards">
         {filteredPokemons.map((pokemon) => (
-          <div key={pokemon.name}>
-            <p>{pokemon.name}</p>
+          <div
+            key={pokemon.name}
+            className="pokemonCard"
+            onClick={() => handleClick(pokemon)}
+          >
             <img
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
                 pokemon.url.split("/")[6]
               }.png`}
               alt={pokemon.name}
             />
+            <h3>{pokemon.name}</h3>
           </div>
         ))}
       </div>

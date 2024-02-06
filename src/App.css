@@ -3,3 +3,7 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
+.pokemonCard {
+  text-align: center;
+  margin: 2rem;
+}
