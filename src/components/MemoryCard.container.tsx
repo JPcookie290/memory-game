@@ -39,38 +39,17 @@ export default function MemoryCardContainer() {
     setFilteredPokemons(myPokemon);
   }, [pokemons]);
 
-  const handleClick = (poke: Pokemon) => {
-    let picked = [...pickedPokemons];
-    let currentPoke: Pokemon | undefined = { name: "", url: "" };
-    if (picked.length > 0)
-      currentPoke = picked.find((pok) => pok.name === poke.name);
-    if (!picked.length) {
-      picked.push(poke);
-      setCurrentScore(currentScore + 1);
-      //setPickedPokemons((prevPokemon) => [...prevPokemon, poke]);
-      //setCurrentScore(currentScore + 1);
-    }
-    console.log("current:", currentPoke);
-    if (currentPoke) {
-      picked = [];
+  const handleClick = (pokemon: Pokemon) => {
+    if (pickedPokemons.includes(pokemon)) {
       setCurrentScore(0);
-    } else if (currentPoke === undefined) {
-      picked.push(currentPoke!);
+      setPickedPokemons([]);
+    } else {
+      setPickedPokemons([...pickedPokemons, pokemon]);
       setCurrentScore(currentScore + 1);
-    }
-    console.log(picked);
-    setPickedPokemons((prev) => [...prev, ...picked]);
-    /*  pickedPokemons.forEach((pokemon) => {
-      if (!pokemon.name.includes(poke.name)) {
-        setPickedPokemons((prevPokemon) => [...prevPokemon, poke]);
-        setCurrentScore(currentScore + 1);
-        // if (currentScore + 1 === 12) setShowGame(!showGame);
-      } else {
-        if (currentScore > highScore) setHighScore(currentScore);
-        setCurrentScore(0);
-        setPickedPokemons([]);
+      if (currentScore > highScore) {
+        setHighScore(currentScore + 1);
       }
-    }); */
+    }
   };
 
   //   const reload = () => {
