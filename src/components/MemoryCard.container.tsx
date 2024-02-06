@@ -8,8 +8,7 @@ export default function MemoryCardContainer() {
   const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[]>([]);
   const [pickedPokemons, setPickedPokemons] = useState<Pokemon[]>([]);
   const [currentScore, setCurrentScore] = useState(0);
-  const [highScore, setHighScore] = useState(0);
-  //const [showGame, setShowGame] = useState(true);
+  const [showGame, setShowGame] = useState(true);
 
   useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
@@ -39,31 +38,47 @@ export default function MemoryCardContainer() {
     setFilteredPokemons(myPokemon);
   }, [pokemons]);
 
+  const shuffelList = () => {
+    const shuffelArray = [...filteredPokemons];
+    for (let i = 0; i < shuffelArray.length; i++) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffelArray[i], shuffelArray[j]] = [shuffelArray[j], shuffelArray[i]];
+    }
+    setFilteredPokemons(shuffelArray);
+  };
+
   const handleClick = (pokemon: Pokemon) => {
+    shuffelList();
     if (pickedPokemons.includes(pokemon)) {
       setCurrentScore(0);
       setPickedPokemons([]);
     } else {
       setPickedPokemons([...pickedPokemons, pokemon]);
       setCurrentScore(currentScore + 1);
-      if (currentScore > highScore) {
-        setHighScore(currentScore + 1);
-      }
+      if (currentScore + 1 === 12) setShowGame(!showGame);
     }
   };
 
-  //   const reload = () => {
-  //     window.location.reload();
-  //   };
+  // const reload = () => {
+  //   window.location.reload();
+  // };
 
   return (
     <>
       <h1>Memory Game</h1>
-      <Score currentScore={currentScore} highScore={highScore} />
-      <MemoryCard
-        filteredPokemons={filteredPokemons}
-        handleClick={handleClick}
-      />
+      <Score currentScore={currentScore} />
+      {showGame && (
+        <MemoryCard
+          filteredPokemons={filteredPokemons}
+          handleClick={handleClick}
+        />
+      )}
+      {!showGame && (
+        <div>
+          <h2>You got all {currentScore} points!</h2>
+          <button onClick={() => window.location.reload()}>Start Over?</button>
+        </div>
+      )}
     </>
   );
 }

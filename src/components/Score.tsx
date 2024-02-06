@@ -1,14 +1,15 @@
-//import { useState } from "react";
+import { useState } from "react";
 
 interface Props {
   currentScore: number;
-  highScore: number;
-  //startOver: () => void;
 }
 
-export default function Score({ currentScore, highScore }: Props) {
-  // const [gameEnd, setGameEnd] = useState(false);
-  // if (currentScore === 12) setGameEnd(!gameEnd);
+export default function Score({ currentScore }: Props) {
+  const [highScore, setHighScore] = useState(0);
+
+  if (currentScore > highScore) {
+    setHighScore(currentScore);
+  }
 
   return (
     <>
@@ -16,12 +17,6 @@ export default function Score({ currentScore, highScore }: Props) {
         <p>Current Score: {currentScore}</p>
         <p>High Score: {highScore}</p>
       </div>
-      {/* {gameEnd && (
-        <div>
-          <h2>You got all {currentScore} points!</h2>
-          <button onClick={startOver}>Start Over?</button>
-        </div>
-      )} */}
     </>
   );
 }
