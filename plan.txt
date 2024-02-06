@@ -1,2 +1,3 @@
 Components: memory-card, memory-cards-display, score(view), container
+mix up function
 Interfaces: file

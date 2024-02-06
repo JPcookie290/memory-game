@@ -81,7 +81,6 @@ export default function MemoryCardContainer() {
     <>
       <h1>Memory Game</h1>
       <Score currentScore={currentScore} highScore={highScore} />
-
       <MemoryCard
         filteredPokemons={filteredPokemons}
         handleClick={handleClick}
