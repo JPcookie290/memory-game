@@ -40,12 +40,27 @@ export default function MemoryCardContainer() {
   }, [pokemons]);
 
   const handleClick = (poke: Pokemon) => {
-    if (!pickedPokemons.length) {
-      setPickedPokemons((prevPokemon) => [...prevPokemon, poke]);
+    let picked = [...pickedPokemons];
+    let currentPoke: Pokemon | undefined = { name: "", url: "" };
+    if (picked.length > 0)
+      currentPoke = picked.find((pok) => pok.name === poke.name);
+    if (!picked.length) {
+      picked.push(poke);
+      setCurrentScore(currentScore + 1);
+      //setPickedPokemons((prevPokemon) => [...prevPokemon, poke]);
+      //setCurrentScore(currentScore + 1);
+    }
+    console.log("current:", currentPoke);
+    if (currentPoke) {
+      picked = [];
+      setCurrentScore(0);
+    } else if (currentPoke === undefined) {
+      picked.push(currentPoke!);
       setCurrentScore(currentScore + 1);
     }
-
-    pickedPokemons.forEach((pokemon) => {
+    console.log(picked);
+    setPickedPokemons((prev) => [...prev, ...picked]);
+    /*  pickedPokemons.forEach((pokemon) => {
       if (!pokemon.name.includes(poke.name)) {
         setPickedPokemons((prevPokemon) => [...prevPokemon, poke]);
         setCurrentScore(currentScore + 1);
@@ -55,7 +70,7 @@ export default function MemoryCardContainer() {
         setCurrentScore(0);
         setPickedPokemons([]);
       }
-    });
+    }); */
   };
 
   //   const reload = () => {
@@ -64,6 +79,7 @@ export default function MemoryCardContainer() {
 
   return (
     <>
+      <h1>Memory Game</h1>
       <Score currentScore={currentScore} highScore={highScore} />
 
       <MemoryCard
