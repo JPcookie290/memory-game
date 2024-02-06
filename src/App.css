@@ -2,6 +2,7 @@
   margin: 0%;
   box-sizing: border-box;
   text-align: center;
+  font-family: "Courier New", Courier, monospace;
 }
 
 body {
@@ -10,8 +11,9 @@ body {
   background-size: cover;
 }
 .header {
+  font-size: 22pt;
   padding: 2rem;
-  background-color: darkblue;
+  background-color: rgb(39, 39, 114);
   color: aliceblue;
   width: 100%;
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
@@ -19,6 +21,7 @@ body {
   -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
 }
 .info {
+  color: aliceblue;
   width: 70%;
   margin-top: 1rem;
   margin-left: auto;
@@ -30,8 +33,8 @@ body {
 }
 .scoreDisplay {
   padding: 1rem;
-  background-color: antiquewhite;
-
+  background-color: rgb(219, 218, 218);
+  color: black;
   width: fit-content;
   border: 2px solid black;
   border-radius: 5px;
@@ -49,6 +52,7 @@ body {
 }
 .pokemonCard {
   text-align: center;
+  color: aliceblue;
   margin: 1rem;
 }
 
@@ -57,7 +61,7 @@ img {
   height: auto;
   border-radius: 100%;
   padding: 0.5rem;
-  border: 2px solid darkblue;
+  border: 2px solid rgb(39, 39, 114);
   background-color: aliceblue;
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.75) inset;
   -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.75) inset;
@@ -72,4 +76,24 @@ img:hover {
 
   left: 0;
   width: 100%;
+}
+
+.wonNotification {
+  margin-top: 5%;
+  margin-bottom: 20%;
+  color: aliceblue;
+  font-size: 20pt;
+  button {
+    margin: 5%;
+    padding: 1rem;
+    font-size: 20pt;
+    background-color: aliceblue;
+    border: none;
+    border-radius: 15px;
+    font-weight: 700;
+  }
+  button:hover {
+    cursor: pointer;
+    scale: 1.1;
+  }
 }
