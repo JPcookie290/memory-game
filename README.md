@@ -1,4 +1,4 @@
-[Link to play](https://memory-game-sage-nine.vercel.app)
+[Click here to play!](https://memory-game-sage-nine.vercel.app)
 
 # React + TypeScript + Vite
 
