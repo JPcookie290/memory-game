@@ -11,7 +11,7 @@ export default function MemoryCardContainer() {
   const [showGame, setShowGame] = useState(true);
 
   useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
       .then((response) => response.json())
       .then((json) => setPokemons(json.results))
       .catch((error) => console.error(error));
@@ -22,14 +22,14 @@ export default function MemoryCardContainer() {
       "bulbasaur",
       "charmander",
       "squirtle",
-      "butterfree",
-      "pikachu",
-      "jigglypuff",
-      "chansey",
+      "pichu",
+      "cleffa",
+      "budew",
+      "togepi",
       "oddish",
       "vulpix",
-      "ditto",
-      "dratini",
+      "azurill",
+      "happiny",
       "mew",
     ];
     const myPokemon = pokemons.filter((pokemon) =>
@@ -65,8 +65,10 @@ export default function MemoryCardContainer() {
 
   return (
     <>
-      <h1>Memory Game</h1>
-      <Score currentScore={currentScore} />
+      <div className="header">
+        <h1>Memory Game</h1>
+      </div>
+      {showGame && <Score currentScore={currentScore} />}
       {showGame && (
         <MemoryCard
           filteredPokemons={filteredPokemons}
@@ -74,11 +76,17 @@ export default function MemoryCardContainer() {
         />
       )}
       {!showGame && (
-        <div>
+        <div className="wonNotification">
           <h2>You got all {currentScore} points!</h2>
           <button onClick={() => window.location.reload()}>Start Over?</button>
         </div>
       )}
+      <div className="Footer">
+        Image by{" "}
+        <a href="https://www.freepik.com/free-vector/map-background-pirate-ships-flat-design_1124035.htm#query=pokemon%20map&position=2&from_view=search&track=ais&uuid=967a720b-51ea-43f9-956d-ad6848035195">
+          Freepik
+        </a>
+      </div>
     </>
   );
 }

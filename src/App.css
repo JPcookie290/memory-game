@@ -1,9 +1,75 @@
+* {
+  margin: 0%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+body {
+  background-image: url("img/119345-OPMOXS-291.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.header {
+  padding: 2rem;
+  background-color: darkblue;
+  color: aliceblue;
+  width: 100%;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+}
+.info {
+  width: 70%;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.scoreDisplay {
+  padding: 1rem;
+  background-color: antiquewhite;
+
+  width: fit-content;
+  border: 2px solid black;
+  border-radius: 5px;
+}
 .memoryCards {
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  height: 100%;
 }
 .pokemonCard {
   text-align: center;
-  margin: 2rem;
+  margin: 1rem;
+}
+
+img {
+  width: 10rem;
+  height: auto;
+  border-radius: 100%;
+  padding: 0.5rem;
+  border: 2px solid darkblue;
+  background-color: aliceblue;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.75) inset;
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.75) inset;
+  -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.75) inset;
+}
+img:hover {
+  cursor: pointer;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+
+  left: 0;
+  width: 100%;
 }

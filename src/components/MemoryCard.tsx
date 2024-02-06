@@ -20,6 +20,7 @@ export default function MemoryCard({ filteredPokemons, handleClick }: Props) {
             }.png`}
             alt={pokemon.name}
           />
+
           <h3>{pokemon.name}</h3>
         </div>
       ))}
