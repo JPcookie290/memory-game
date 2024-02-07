@@ -59,10 +59,6 @@ export default function MemoryCardContainer() {
     }
   };
 
-  // const reload = () => {
-  //   window.location.reload();
-  // };
-
   return (
     <>
       <div className="header">
